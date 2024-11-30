@@ -7,6 +7,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/view_calendar', function (){
-    
-});

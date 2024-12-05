@@ -3,62 +3,71 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Calendar;
+use Carbon\Carbon;
 
 class CalendarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $events = Calendar::all()->map(function ($event) {
+            return [
+                'start' => Carbon::parse($event->start)->format('Y-m-d H:i:s'),
+                'end' => Carbon::parse($event->end)->format('Y-m-d H:i:s'),
+                'title' => $event->title,
+                'description' => $event->description,
+            ];
+        });
+
+        return view('calendars.calendar', ['events' => $events]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('calendars.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'start' => 'required|date',
+            'end' => 'required|date|after:start',
+        ]);
+
+        Calendar::create($request->all());
+        return redirect()->route('calendars.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $event = Calendar::findOrFail($id);
+        return view('calendars.show', compact('event'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $event = Calendar::findOrFail($id);
+        return view('calendars.edit', compact('event'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'start' => 'required|date',
+            'end' => 'required|date|after:start',
+        ]);
+
+        $event = Calendar::findOrFail($id);
+        $event->update($request->all());
+        return redirect()->route('calendars.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $event = Calendar::findOrFail($id);
+        $event->delete;
+        return redirect()->route('calendars.index');
     }
 }

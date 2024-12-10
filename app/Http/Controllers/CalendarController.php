@@ -29,13 +29,20 @@ class CalendarController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
+        $validated = $request->validate([
             'start' => 'required|date',
             'end' => 'required|date|after:start',
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
-        Calendar::create($request->all());
+        $event = new Calendar();
+        $event->start = Carbon::parse($validated['start'])->format('Y-m-d H:i:s');
+        $event->end = Carbon::parse($validated['end'])->format('Y-m-d H:i:s');
+        $event->title = $validated['title'];
+        $event->description = $validated['description'];
+        $event->save();
+
         return redirect()->route('calendars.index');
     }
 

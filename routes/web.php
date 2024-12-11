@@ -93,7 +93,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
 });
 
-require __DIR__ . '/auth.php';
+Route::resource('gallery', GalleryController::class)->except(['show']);
+Route::get('gallery/{id}', [GalleryController::class, 'show']);
+
 
 
 require __DIR__.'/auth.php';

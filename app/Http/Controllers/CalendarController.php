@@ -74,7 +74,7 @@ class CalendarController extends Controller
     public function destroy(string $id)
     {
         $event = Calendar::findOrFail($id);
-        $event->delete;
+        $event->delete();
         return redirect()->route('calendars.index');
     }
 }

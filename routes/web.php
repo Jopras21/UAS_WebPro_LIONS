@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('/calendars', CalendarController::class);
 Route::get('/calendars/edit/{id}', [CalendarController::class, 'edit'])->name('calendars.edit');
 Route::put('/calendars/edit/{id}', [CalendarController::class, 'update'])->name('calendars.update');
 Route::delete('/calendars/{id}', [CalendarController::class, 'destroy'])->name('calendars.destroy');

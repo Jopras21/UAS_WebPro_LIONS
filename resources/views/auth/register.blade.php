@@ -48,27 +48,5 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-
-        <div class="mb-3">
-    <label for="captcha">Captcha</label>
-    <div class="captcha">
-        <span>{!! captcha_img() !!}</span>
-        <button type="button" class="btn btn-secondary btn-refresh">Refresh</button>
-    </div>
-    <input id="captcha" type="text" class="form-control" name="captcha">
-    @error('captcha')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
-</div>
-
-<script>
-    document.querySelector('.btn-refresh').addEventListener('click', function() {
-        fetch('/refresh-captcha')
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector('.captcha span').innerHTML = data;
-            });
-    });
-</script>
     </form>
 </x-guest-layout>

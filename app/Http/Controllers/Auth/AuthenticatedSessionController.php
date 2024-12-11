@@ -24,10 +24,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->validate([
-            'captcha' => ['required', 'captcha'], // Validasi CAPTCHA
-        ]);
-
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -49,4 +45,3 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 }
-

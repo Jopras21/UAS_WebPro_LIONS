@@ -1,16 +1,26 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\GalleryController;
-use app\Models\Calendar;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('calendars', CalendarController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// gallery
-Route::resource('gallery', GalleryController::class);
-Route::post('/gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Tambahkan rute refresh captcha
+Route::get('/refresh-captcha', function () {
+    return response()->json(['captcha' => captcha_img()]);
+})->name('refresh.captcha');
+
+require __DIR__.'/auth.php';

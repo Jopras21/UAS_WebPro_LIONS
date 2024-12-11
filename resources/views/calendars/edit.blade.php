@@ -8,15 +8,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e4e4e3; /* Light background */
-            color: #1e1a1f; /* Dark text color */
+            background-color: #e4e4e3;
+            color: #1e1a1f;
             margin: 0;
             padding: 20px;
         }
 
         h1 {
             text-align: center;
-            color: #3c5097; /* Title color */
+            color: #293f71;
             margin-bottom: 20px;
             font-size: 36px;
             font-weight: bold;
@@ -26,10 +26,10 @@
         .form-container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff; /* White background for the form */
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,7 +39,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #1e1a1f; /* Label color */
+            color: #293f71;
             font-size: 18px;
         }
 
@@ -47,30 +47,30 @@
         input[type="datetime-local"],
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
             font-size: 18px;
         }
 
         input[type="text"]:focus,
         input[type="datetime-local"]:focus,
         textarea:focus {
-            border-color: #3c5097; /* Focus border color */
+            border-color: #293f71;
             outline: none;
-            box-shadow: 0 0 10px rgba(60, 80, 151, 0.5);
+            box-shadow: 0 0 10px rgba(41, 63, 113, 0.5);
         }
 
         button {
-            background-color: #3c5097; /* Button background color */
-            color: white; /* Button text color */
+            background-color: #293f71;
+            color: white;
             border: none;
             border-radius: 5px;
-            padding: 10px 15px;
+            padding: 12px 15px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             font-weight: bold;
             font-size: 18px;
             width: 100%;
@@ -78,19 +78,36 @@
         }
 
         button:hover {
-            background-color: #293f71; /* Button hover color */
+            background-color: #1e1a1f;
+        }
+
+        .update-button {
+            transition: transform 0.2s;
+        }
+
+        .update-button:hover {
+            transform: translateY(-5px);
         }
 
         .delete-button {
-            background-color: #d9534f; /* Delete button color */
+            background-color: #d9534f;
         }
 
         .delete-button:hover {
-            background-color: #c9302c; /* Delete button hover color */
+            background-color: #c9302c;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-5px, 0); }
+            50% { transform: translate(5px, 0); }
+            75% { transform: translate(-5px, 0); }
+            100% { transform: translate(0); }
         }
 
         .error-list {
-            color: red; /* Error message color */
+            color: red;
             margin-bottom: 15px;
             font-size: 18px;
             font-weight: bold;
@@ -124,13 +141,13 @@
 
             <label for="start">Start Date:</label>
             <input type="datetime-local" name="start" id="start"
-                value="{{ old('start', \Carbon\Carbon::parse($event->start)->format('Y-m-d\TH:i')) }}" required />
+ value="{{ old('start', \Carbon\Carbon::parse($event->start)->format('Y-m-d\TH:i')) }}" required />
 
             <label for="end">End Date:</label>
             <input type="datetime-local" name="end" id="end"
                 value="{{ old('end', \Carbon\Carbon::parse($event->end)->format('Y-m-d\TH:i')) }}" required />
 
-            <button type="submit">Update</button>
+            <button type="submit" class="update-button">Update</button>
         </form>
 
         <form action="/calendars/{{$event->id}}" method="post" style="margin-top: 10px;">

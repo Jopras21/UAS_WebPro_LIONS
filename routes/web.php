@@ -34,4 +34,7 @@ Route::get('/refresh-captcha', function () {
     return response()->json(['captcha' => captcha_img()]);
 })->name('refresh.captcha');
 
+Route::get('/gallery', [GalleryController::class, 'user_index'])->name('gallery.user_index');
+Route::get('/gallery/{category:slug}', [GalleryController::class, 'user_show'])->name('gallery.user_show');
+
 require __DIR__.'/auth.php';

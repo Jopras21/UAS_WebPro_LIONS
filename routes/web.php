@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Foundation\Inspiring;
 use App\Models\Contact;
+use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,8 @@ Route::resource('/calendars', CalendarController::class);
 Route::get('/calendars/edit/{id}', [CalendarController::class, 'edit'])->name('calendars.edit');
 Route::put('/calendars/edit/{id}', [CalendarController::class, 'update'])->name('calendars.update');
 Route::delete('/calendars/{id}', [CalendarController::class, 'destroy'])->name('calendars.destroy');
+
+Route::get('/members', [MemberController::class, 'index'])->name('members.index');
 
 // gallery
 Route::resource('gallery', GalleryController::class);

@@ -7,6 +7,7 @@ use App\Http\Controllers\OrganizationController; // Tambahkan import untuk Organ
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MatchController;
 use Illuminate\Foundation\Inspiring;
 use App\Models\Contact;
 
@@ -91,6 +92,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/dashboard/gallery', GalleryController::class);
     Route::post('/dashboard/gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
+    Route::get('/matches', [MatchController::class, 'showMatches'])->name('matches.show');
 });
 
 Route::resource('gallery', GalleryController::class)->except(['show']);

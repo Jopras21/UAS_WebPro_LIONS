@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "content-hash": "9770cefab774cca3a548681e90b328de",
+=======
     "content-hash": "82c20947c14da455ee07f3996ce9e9ad",
+>>>>>>> dd0260f1b1a9ef94f998b0d5ea46c02ba84c2324
     "packages": [
         {
             "name": "brick/math",
@@ -3580,6 +3584,61 @@
             "time": "2024-04-27T21:32:50+00:00"
         },
         {
+            "name": "sayakb/captcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sayakb/captcha.git",
+                "reference": "934f5b273677f11ab0082356403ec35a870563a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sayakb/captcha/zipball/934f5b273677f11ab0082356403ec35a870563a1",
+                "reference": "934f5b273677f11ab0082356403ec35a870563a1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.0.0",
+                "php": ">=5.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sayakb\\Captcha": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muharrem ERIN",
+                    "email": "me@mewebstudio.com"
+                },
+                {
+                    "name": "Sayak Banerjee",
+                    "email": "mail@sayakbanerjee.com"
+                }
+            ],
+            "description": "Captcha Package for Laravel 4, Fork of mewebstudio/captcha",
+            "homepage": "https://github.com/sayakb/captcha",
+            "keywords": [
+                "L4",
+                "Laravel 4",
+                "captcha",
+                "captcha image",
+                "laravel",
+                "mecaptcha",
+                "security"
+            ],
+            "support": {
+                "source": "https://github.com/sayakb/captcha/tree/master"
+            },
+            "time": "2013-12-17T02:42:17+00:00"
+        },
+        {
             "name": "symfony/clock",
             "version": "v7.2.0",
             "source": {
@@ -6463,6 +6522,8 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "jean85/pretty-package-versions",
             "version": "2.1.0",
             "source": {
@@ -6583,6 +6644,7 @@
             "time": "2024-11-20T15:01:15+00:00"
         },
         {
+>>>>>>> dd0260f1b1a9ef94f998b0d5ea46c02ba84c2324
             "name": "laravel/pail",
             "version": "v1.2.1",
             "source": {
@@ -9349,8 +9411,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "sayakb/captcha": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

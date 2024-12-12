@@ -1,3 +1,8 @@
+@extends('layouts.app')
+
+@section('title', 'Match')
+
+@section('content')
 <div class="container">
     @foreach ($matches as $month => $monthMatches)
         <div class="month-section">
@@ -34,12 +39,18 @@
         </div>
     @endforeach
 </div>
+@endsection
 
+@section('styles')
 <style>
     .container {
         max-width: 1200px;
         margin: 0 auto;
         font-family: Arial, sans-serif;
+        background-color: #e4e4e3;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .month-section {
@@ -47,7 +58,7 @@
     }
 
     .month-header {
-        background-color: #293F71;
+        background-color: #E91E63;
         color: white;
         padding: 1rem 2rem;
         font-size: 1.2rem;
@@ -60,7 +71,7 @@
         grid-template-columns: 150px 200px 1fr auto 1fr;
         align-items: center;
         padding: 1rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #293f71;
     }
 
     .match-date {
@@ -70,7 +81,7 @@
     .date {
         font-weight: bold;
         font-size: 1.1rem;
-        color: #333;
+        color: #293f71;
     }
 
     .time {
@@ -100,13 +111,14 @@
 
     .team-name {
         font-weight: 500;
-        color: #333;
+        color: #293f71;
     }
 
     .score {
         font-weight: bold;
         font-size: 1.2rem;
         padding: 0 2rem;
+        color: #3c5097;
     }
 
     @media (max-width: 768px) {
@@ -125,3 +137,4 @@
         }
     }
 </style>
+@endsection

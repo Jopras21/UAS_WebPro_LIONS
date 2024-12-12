@@ -1,13 +1,11 @@
-module.exports = {
-  content: [
-      './resources/**/*.blade.php',
-      './resources/**/*.js',
-      './resources/**/*.vue',
-  ],
+import defaultTheme from "tailwindcss/defaultTheme";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [],
   theme: {
-      extend: {},
+    extend: {},
   },
-  plugins: [
-      require('@tailwindcss/forms'),
-  ],
-};
+  plugins: [],
+}
+

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_template')
+@extends('layouts.app')
 
 @section('content')
 
@@ -9,7 +9,7 @@
     }
 </style>
 
-<div class="mx-auto min-h-[500px] p-6 sm:p-12 bg-white">
+<div class="mx-auto min-h-[700px] p-6 sm:p-12 bg-white">
     @if (session()->has('status'))
     @include('components.status', ['status' => session('status')])
     @endif

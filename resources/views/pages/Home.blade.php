@@ -15,6 +15,8 @@
                 <img src="{{ asset('images/logo.png') }}" alt="MyWebsite Logo" class="h-[95px] w-auto">
             </a>
             <div>
+                <a href="/calendars" class="text-gray-50 hover:text-blue-500 px-4 py-2">Calendar</a>
+                <a href="/gallery" class="text-gray-50 hover:text-blue-500 px-4 py-2">Gallery</a>
                 <a href="/login" class="text-gray-50 hover:text-blue-500 px-4 py-2">Login</a>
                 <a href="/register" class="text-gray-50 hover:text-blue-500 px-4 py-2">Register</a>
             </div>

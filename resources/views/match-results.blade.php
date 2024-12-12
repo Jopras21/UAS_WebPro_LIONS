@@ -1,3 +1,8 @@
+@extends('layouts.app')
+
+@section('title', 'Match')
+
+@section('content')
 <div class="container">
     @foreach ($matches as $month => $monthMatches)
         <div class="month-section">
@@ -34,7 +39,9 @@
         </div>
     @endforeach
 </div>
+@endsection
 
+@section('styles')
 <style>
     .container {
         max-width: 1200px;
@@ -130,3 +137,4 @@
         }
     }
 </style>
+@endsection

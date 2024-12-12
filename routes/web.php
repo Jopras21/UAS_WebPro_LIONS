@@ -46,11 +46,11 @@ Route::get('/refresh-captcha', function () {
 //gallery
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('pages.about', [
-        'title' => 'About'
-    ]);
-})->name('about');
+//Route::get('/about', function () {
+    //return view('pages.about', [
+        //'title' => 'About'
+    //]);
+//})->name('about');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/contact/form', [ContactController::class, 'create'])->name('contact.create');

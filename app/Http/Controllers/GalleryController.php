@@ -22,7 +22,7 @@ class GalleryController extends Controller
             $galleries = Gallery::all();
         }
 
-        return view('pages.galleries.index', [
+        return view('pages.gallery.index', [
             'title' => 'Gallery',
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
@@ -34,7 +34,7 @@ class GalleryController extends Controller
 
     public function create()
     {
-        return view('pages.galleries.create', [
+        return view('pages.gallery.create', [
             'title' => 'Create Gallery',
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
@@ -84,7 +84,7 @@ class GalleryController extends Controller
         $previousCategory = Category::where('id', '<', $category->id)->orderBy('id', 'desc')->first();
         $nextCategory = Category::where('id', '>', $category->id)->orderBy('id', 'asc')->first();
 
-        return view('pages.galleries.user_show', [
+        return view('pages.gallery.user_show', [
             'title' => $category->name,
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
@@ -107,7 +107,7 @@ class GalleryController extends Controller
 
     public function user_index()
     {
-        return view('pages.galleries.user_index', [
+        return view('pages.gallery.user_index', [
             'title' => 'Gallery',
             // 'galleries' => Gallery::where('user_id', Auth::id())->get(),
             'categories' => Category::all()

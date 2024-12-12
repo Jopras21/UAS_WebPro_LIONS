@@ -58,7 +58,7 @@
     }
 
     .month-header {
-        background-color: #E91E63;
+        background-color: #293f71;
         color: white;
         padding: 1rem 2rem;
         font-size: 1.2rem;
@@ -81,7 +81,7 @@
     .date {
         font-weight: bold;
         font-size: 1.1rem;
-        color: #293f71;
+        color: #293F71;
     }
 
     .time {

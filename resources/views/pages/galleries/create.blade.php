@@ -41,6 +41,10 @@
     </form>
 
     <div class="flex justify-center my-5">
+        <a href="{{ route('gallery.upload') }}" class="text-sm text-white px-4 py-3 bg-[#849274] hover:underline transition-all duration-200 rounded-lg">upload</a>
+    </div>
+
+    <div class="flex justify-center my-5">
         <a href="{{ route('gallery.index') }}" class="text-sm text-white px-4 py-3 bg-[#849274] hover:underline transition-all duration-200 rounded-lg">Back</a>
     </div>
 </div>

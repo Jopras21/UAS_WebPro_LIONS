@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\HomeController;
+use App\Models\Calendar;
 use Illuminate\Foundation\Inspiring;
 use App\Models\Contact;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+//Route::get('/dashboard', function () {
+    //return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,11 +41,7 @@ Route::get('/refresh-captcha', function () {
 
 
 //gallery
-Route::get('/', function () {
-    return view('pages.home', [
-        'title' => 'Home'
-    ]);
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('pages.about', [
@@ -80,8 +76,32 @@ Route::middleware('auth')->group(function () {
             'pengajuans' => Contact::limit(10)->orderByDesc('id')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
             'notification' => Contact::where('status', 'Pending')->get(),
+            'matches' => collect([
+                'OKTOBER 2024' => [
+                    (object)[
+                        'date' => 'OKT 13',
+                        'time' => '14:45',
+                        'league' => 'Liga Mahasiswa',
+                        'home_team' => 'Universitas Multimedia Nusantara',
+                        'home_team_logo' => asset('images/logo.png'),
+                        'home_score' => 85,
+                        'away_team' => 'Universitas Negri Jakarta',
+                        'away_team_logo' => asset('images/unjlogo.jpeg'),
+                        'away_score' => 62,
+                    ],
+                ],
+            ]),
+            'events' => Calendar::latest()->take(5)->get()->map(function ($event) {
+                return [
+                    'start' => $event->start,
+                    'end' => $event->end,
+                    'title' => $event->title,
+                    'description' => $event->description,
+                ];
+            }),
         ]);
-    })->name('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
 
     Route::get('/dashboard/services', [ContactController::class, 'show'])->name('contact.show');
     Route::get('/dashboard/services/{id}', [ContactController::class, 'edit'])->name('contact.edit');
@@ -92,9 +112,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/dashboard/gallery', GalleryController::class);
     Route::post('/dashboard/gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
-    Route::get('/matches', [MatchController::class, 'showMatches'])->name('matches.show');
 });
 
+Route::get('/matches', [MatchController::class, 'showMatches'])->name('matches.show');
 Route::resource('gallery', GalleryController::class)->except(['show']);
 Route::get('gallery/{id}', [GalleryController::class, 'show']);
 

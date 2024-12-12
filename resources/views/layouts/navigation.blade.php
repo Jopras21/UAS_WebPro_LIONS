@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-[#051022] to-[#3a4e93] px-4 py-3">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,15 +6,21 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('images/logo.png') }}" class="h-[95px] w-auto">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                            {{ __('Gallery') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('calendars.index')" :active="request()->routeIs('calendars.index')">
+                            {{ __('Calendar') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('matches.show')" :active="request()->routeIs('matches.show')">
+                            {{ __('Matches') }}
+                        </x-nav-link>
                 </div>
             </div>
 
@@ -22,7 +28,7 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white bg-gradient-to-r from-[#324582] to-[#354989] hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::check() ? Auth::user()->name : 'Guest' }}</div>
 
                             <div class="ms-1">

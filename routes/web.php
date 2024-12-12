@@ -42,6 +42,7 @@ Route::get('/refresh-captcha', function () {
     return response()->json(['captcha' => captcha_img()]);
 })->name('refresh.captcha');
 
+Route::resource('members', MemberController::class);
 
 //gallery
 Route::get('/', [HomeController::class, 'index'])->name('home');

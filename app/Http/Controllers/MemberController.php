@@ -3,76 +3,71 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 
 class MemberController extends Controller
 {
     public function index()
     {
-        $events = Calendar::all()->map(function ($event) {
-            return [
-                'start' => Carbon::parse($event->start)->format('Y-m-d H:i:s'),
-                'end' => Carbon::parse($event->end)->format('Y-m-d H:i:s'),
-                'title' => $event->title,
-                'description' => $event->description,
-            ];
-        });
+        $members = Member::all();
 
-        return view('calendars.calendar', ['events' => $events]);
+        return view('members.index', ['members' => $members]);
     }
 
     public function create()
     {
-        return view('calendars.create');
+        return view('members.create');
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'start' => 'required|date',
-            'end' => 'required|date|after:start',
-            'title' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:members,email',
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'joined_at' => 'required|date',
         ]);
 
-        $event = new Calendar();
-        $event->start = Carbon::parse($validated['start'])->format('Y-m-d H:i:s');
-        $event->end = Carbon::parse($validated['end'])->format('Y-m-d H:i:s');
-        $event->title = $validated['title'];
-        $event->description = $validated['description'];
-        $event->save();
+        Member::create($validated);
 
-        return redirect()->route('calendars.index');
+        return redirect()->route('members.index')->with('status', 'Member added successfully.');
     }
 
     public function show(string $id)
     {
-        $event = Calendar::findOrFail($id);
-        return view('calendars.show', compact('event'));
+        $member = Member::findOrFail($id);
+
+        return view('members.show', compact('member'));
     }
 
     public function edit(string $id)
     {
-        $event = Calendar::findOrFail($id);
-        return view('calendars.edit', compact('event'));
+        $member = Member::findOrFail($id);
+
+        return view('members.edit', compact('member'));
     }
 
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required',
-            'start' => 'required|date',
-            'end' => 'required|date|after:start',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:members,email,' . $id,
+            'phone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'joined_at' => 'required|date',
         ]);
 
-        $event = Calendar::findOrFail($id);
-        $event->update($request->all());
-        return redirect()->route('calendars.index');
+        $member = Member::findOrFail($id);
+        $member->update($request->all());
+
+        return redirect()->route('members.index')->with('status', 'Member updated successfully.');
     }
 
     public function destroy(string $id)
     {
-        $event = Calendar::findOrFail($id);
-        $event->delete();
-        return redirect()->route('calendars.index');
+        $member = Member::findOrFail($id);
+        $member->delete();
+        return redirect()->route('members.index')->with('status', 'Member deleted successfully.');
     }
 }

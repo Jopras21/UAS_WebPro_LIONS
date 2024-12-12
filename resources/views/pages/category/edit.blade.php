@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="min-h-[500px] bg-white rounded-md border border-gray-100 p-6 flex items-center">
     <form class="max-w-md w-full mx-auto" action="{{ route('category.update', ['category' => $category->slug]) }}" method="POST">
         @csrf

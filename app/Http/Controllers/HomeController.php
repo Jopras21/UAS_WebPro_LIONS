@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Calendar;
 
-class MatchController extends Controller
+class HomeController extends Controller
 {
-    public function showMatches()
+    public function index()
     {
+        // Mendapatkan data pertandingan
         $matches = collect([
             'OKTOBER 2024' => [
                 (object)[
@@ -24,11 +26,21 @@ class MatchController extends Controller
             ],
         ]);
 
-        return view('match-results', ['matches' => $matches]);
+        // Fetch the first 5 events for the homepage from the Calendar model
+        $events = Calendar::latest()->take(5)->get()->map(function ($event) {
+            return [
+                'start' => $event->start,
+                'end' => $event->end,
+                'title' => $event->title,
+                'description' => $event->description,
+            ];
+        });
 
+        // Mengirimkan data pertandingan ke view
         return view('pages.home', [
-            'matches' => $matches, // Mengirimkan data matches ke view home.blade.php
-            'title' => 'Home'
+            'title' => 'Home',
+            'matches' => $matches,
+            'events' => $events,
         ]);
     }
 }

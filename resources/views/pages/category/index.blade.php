@@ -1,7 +1,5 @@
 @extends('layouts.dashboard_template')
 
-@section('content')
-
 <div class="rounded-md border bg-white border-gray-100 m-6 px-0 sm:p-6 shadow-md shadow-black/5">
 
     @if (session()->has('status'))

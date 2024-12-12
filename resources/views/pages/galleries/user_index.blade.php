@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-gallery">
+<div class="bg-gallery text-slate-50">
     <div class="py-10">
         <div class="min-w-screen h-3 bg-[#9BAA89] flex justify-center items-center">
             <h1 class="text-3xl font-bold bg-white text-[#253A35] text-center inline-block px-3">Gallery</h1>

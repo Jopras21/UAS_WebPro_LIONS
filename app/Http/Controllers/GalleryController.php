@@ -22,8 +22,8 @@ class GalleryController extends Controller
             $galleries = Gallery::all();
         }
 
-        return view('galleries.index', [
-            'title' => 'galleries',
+        return view('pages.galleries.index', [
+            'title' => 'Gallery',
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
             'galleries' => $galleries,
@@ -34,8 +34,8 @@ class GalleryController extends Controller
 
     public function create()
     {
-        return view('galleries.create', [
-            'title' => 'Create Galleries',
+        return view('pages.galleries.create', [
+            'title' => 'Create Gallery',
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
             'categories' => Category::all()
@@ -76,7 +76,7 @@ class GalleryController extends Controller
             ]);
         }
 
-        return redirect()->route('galleries.index')->with('status', 'Images uploaded successfully');
+        return redirect()->route('gallery.index')->with('status', 'Images uploaded successfully');
     }
 
     public function user_show(Category $category)
@@ -84,7 +84,7 @@ class GalleryController extends Controller
         $previousCategory = Category::where('id', '<', $category->id)->orderBy('id', 'desc')->first();
         $nextCategory = Category::where('id', '>', $category->id)->orderBy('id', 'asc')->first();
 
-        return view('galleries.user_show', [
+        return view('pages.galleries.user_show', [
             'title' => $category->name,
             'notification' => Contact::where('status', 'Pending')->get(),
             'pendings' => Contact::where('status', 'Pending')->get(),
@@ -107,8 +107,8 @@ class GalleryController extends Controller
 
     public function user_index()
     {
-        return view('galleries.user_index', [
-            'title' => 'galleries',
+        return view('pages.galleries.user_index', [
+            'title' => 'Gallery',
             // 'galleries' => Gallery::where('user_id', Auth::id())->get(),
             'categories' => Category::all()
         ]);

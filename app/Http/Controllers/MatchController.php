@@ -36,7 +36,7 @@ class MatchController extends Controller
             'AGUSTUS 2024' => [
                 (object)[
                     'date' => 'AUG 20',
-                    'time' => '16:00',
+                    'time' => '18:00',
                     'league' => 'Sparring',
                     'home_team' => 'Universitas Multimedia Nusantara',
                     'home_team_logo' => asset('images/logo.png'),
@@ -44,6 +44,19 @@ class MatchController extends Controller
                     'away_team' => 'Immortal Basketball Club',
                     'away_team_logo' => asset('images/immologo.png'),
                     'away_score' => 51,
+                ],
+            ],
+            'MEI 2024' => [
+                (object)[
+                    'date' => 'MEI 22',
+                    'time' => '18:00',
+                    'league' => 'Sparring',
+                    'home_team' => 'Universitas Multimedia Nusantara',
+                    'home_team_logo' => asset('images/logo.png'),
+                    'home_score' => 65,
+                    'away_team' => 'Bina Nusantara University',
+                    'away_team_logo' => asset('images/binuslogo.jpeg'),
+                    'away_score' => 61,
                 ],
             ],
         ]);

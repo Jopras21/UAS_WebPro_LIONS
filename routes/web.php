@@ -56,7 +56,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/contact/form', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact/form', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 
 Route::get('/gallery', [GalleryController::class, 'user_index'])->name('gallery.user_index');
 Route::get('/gallery/{category:slug}', [GalleryController::class, 'user_show'])->name('gallery.user_show');
@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/matches', [MatchController::class, 'showMatches'])->name('matches.show');
 Route::resource('gallery', GalleryController::class)->except(['show']);
 Route::get('gallery/{id}', [GalleryController::class, 'show']);
+
 
 
 

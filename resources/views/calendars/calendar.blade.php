@@ -12,7 +12,7 @@
     @endif
     </div>
     <div class="flex justify-center items-center min-h-screen">
-        <div id="calendar" class="w-full max-w-7xl ml-[150px] text-gray-50"></div> <!-- Tailwind class untuk margin kiri dan ukuran -->
+        <div id="calendar" class="w-full max-w-7xl text-gray-50"></div> <!-- Tailwind class untuk margin kiri dan ukuran -->
     </div>
 
     <div class="event-tooltip" id="event-tooltip"></div>

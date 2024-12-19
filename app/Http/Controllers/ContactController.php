@@ -99,8 +99,30 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $contact = Contact::findOrFail($id);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'nim' => 'required',
+            'type' => 'required',
+            'phone' => 'required',
+            'line' => 'required',
+            'organization' => 'required',
+            'title' => 'required',
+            'event_name' => 'required',
+            'description' => 'required',
+            'date' => 'required|date|after:today',
+            'start_time' => 'required',
+            'end_time' => 'required|after:start_time',
+            'location' => 'required',
+            'person' => 'required|integer|min:0',   
+        ]);
 
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 
         return redirect()->route('contact.show', $contact->id)->with('status', $contact->event_name . ' has been updated');
@@ -118,6 +140,18 @@ class ContactController extends Controller
     {
         return view('contact.confirm', [
             'title' => 'Contact'
+        ]);
+    }
+
+    /**
+     * Display the contact us page.
+     */
+    public function contactUs()
+    {
+        return view('contact.us', [
+            'title' => 'Contact Us',
+            'instagram' => 'https://instagram.com/your_account', // Ganti dengan akun Instagram Anda
+            'phone' => '+1234567890' // Ganti dengan nomor telepon Anda
         ]);
     }
 }

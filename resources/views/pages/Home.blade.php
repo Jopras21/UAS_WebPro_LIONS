@@ -19,6 +19,7 @@
                 <a href="/gallery" class="text-gray-50 hover:text-blue-500 px-4 py-2">Gallery</a>
                 <a href="/login" class="text-gray-50 hover:text-blue-500 px-4 py-2">Login</a>
                 <a href="/register" class="text-gray-50 hover:text-blue-500 px-4 py-2">Register</a>
+                <a href="/contact" class="text-gray-50 hover:text-blue-500 px-4 py-2">Contact</a>
             </div>
         </div>
     </nav>

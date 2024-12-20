@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-black text-white flex flex-col items-center justify-center border-4 ">
+<div class="min-h-screen text-white flex flex-col items-center justify-center">
   <!-- Header Section -->
-  <div class="text-center mb-10">
+  <div class="text-center">
     <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
     <div class="flex flex-row justify-center">
       <!-- official instagram -->
@@ -11,12 +11,12 @@
         <a href="https://www.instagram.com/umnlions_basketball/" target="_blank" rel="noopener noreferrer">
           <div class="mb-2 text-gold flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 64 64">
-                <linearGradient id="jm_nAfYbxsVmTlYr5N4x9a_43625_gr1" x1="32" x2="32" y1="6.667" y2="57.872" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+                <linearGradient id="jm_nAfYbxsVmTlYr5N4x9a_43625_gr1" x1="100%" y1="0%" x2="50%" y2="80%">
                     <stop offset="0" stop-color="#051022"></stop>
                     <stop offset="1" stop-color="#3a4e93"></stop>
                 </linearGradient>
                 <path fill="url(#jm_nAfYbxsVmTlYr5N4x9a_43625_gr1)" d="M44,57H20c-7.168,0-13-5.832-13-13V20c0-7.168,5.832-13,13-13h24c7.168,0,13,5.832,13,13v24 C57,51.168,51.168,57,44,57z M20,9C13.935,9,9,13.935,9,20v24c0,6.065,4.935,11,11,11h24c6.065,0,11-4.935,11-11V20 c0-6.065-4.935-11-11-11H20z"></path>
-                <linearGradient id="jm_nAfYbxsVmTlYr5N4x9b_43625_gr2" x1="32" x2="32" y1="18.167" y2="45.679" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+                <linearGradient id="jm_nAfYbxsVmTlYr5N4x9b_43625_gr2" x1="64" x2="32" y1="18.167" y2="45.679" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
                     <stop offset="0" stop-color="#051022"></stop>
                     <stop offset="1" stop-color="#3a4e93"></stop>
                 </linearGradient>
@@ -32,12 +32,10 @@
       <div class="text-center mx-5">
         <div class="mb-2 text-gold flex justify-center items-center">
           <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <defs>
-              <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="phoneGradient" x1="50%" y1="0%" x2="50%" y2="50%">
                 <stop offset="0" stop-color="#051022"></stop>
                 <stop offset="1" stop-color="#3a4e93"></stop>
               </linearGradient>
-            </defs>
             <path fill="url(#phoneGradient)" d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.3-.1c1.12.7 2.47 1.1 3.89 1.1.55 0 1 .45 1 1v3.75c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1H6c.55 0 1 .45 1 1 0 1.42.4 2.77 1.1 3.89.09.14.09.31-.01.44l-2.2 2.2z"/>
           </svg>
         </div>
@@ -48,7 +46,7 @@
         <div class="mb-2 text-gold flex justify-center items-center">
           <svg class="w-10 h-10" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <defs>
-              <linearGradient id="emailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="emailGradient"  x1="100%" y1="0%" x2="20%" y2="50%">
                 <stop offset="0" stop-color="#051022"></stop>
                 <stop offset="1" stop-color="#3a4e93"></stop>
               </linearGradient>  
@@ -62,7 +60,7 @@
 
   <!-- Contact Form Section -->
   <div class="w-full max-w-md">
-    <form class="bg-black rounded-lg p-6 space-y-4">
+    <form class="rbg-black ounded-lg p-6 space-y-4">
         @csrf
       <div>
         <label for="name" class="block text-sm font-medium mb-1">Name</label>
@@ -80,7 +78,7 @@
         <label for="message" class="block text-sm font-medium mb-1">Message</label>
         <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none"></textarea>
       </div>
-      <button type="submit" class="w-full py-2 bg-gold text-black font-semibold rounded hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">Send Message</button>
+      <button type="submit" class="w-full py-2 font-semibold rounded hover:bg-gradient-to-r from-[#3a4e93]  to-[#051022] focus:outline-none">Send Message</button>
     </form>
   </div>
 </div>

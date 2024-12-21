@@ -36,12 +36,7 @@ class CalendarController extends Controller
             'description' => 'required',
         ]);
 
-        $event = new Calendar();
-        $event->start = Carbon::parse($validated['start'])->format('Y-m-d H:i:s');
-        $event->end = Carbon::parse($validated['end'])->format('Y-m-d H:i:s');
-        $event->title = $validated['title'];
-        $event->description = $validated['description'];
-        $event->save();
+        Calendar::create($validated);
 
         return redirect()->route('calendars.index');
     }

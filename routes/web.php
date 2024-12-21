@@ -31,18 +31,19 @@ Route::get('/calendars/edit/{id}', [CalendarController::class, 'edit'])->name('c
 Route::put('/calendars/edit/{id}', [CalendarController::class, 'update'])->name('calendars.update');
 Route::delete('/calendars/{id}', [CalendarController::class, 'destroy'])->name('calendars.destroy');
 
+Route::resource('members', MemberController::class);
 Route::get('/members', [MemberController::class, 'index'])->name('members.index');
 
 // gallery
 Route::resource('gallery', GalleryController::class);
 Route::post('/gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
+Route::get('/members/edit/{id}', [MemberController::class, 'edit'])->name('members.edit');
+Route::put('/members/edit/{id}', [MemberController::class, 'update'])->name('members.update');
 
 // Tambahkan rute refresh captcha
 Route::get('/refresh-captcha', function () {
     return response()->json(['captcha' => captcha_img()]);
 })->name('refresh.captcha');
-
-Route::resource('members', MemberController::class);
 
 //gallery
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -20,7 +20,26 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        @if (Auth::check())
             @include('layouts.navigation')
+        @else
+            <nav class="bg-gradient-to-r from-[#051022] to-[#3a4e93] px-4 py-3">
+                <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                    <a href="/" class="flex items-center">
+                        <img src="{{ asset('images/logo.png') }}" alt="MyWebsite Logo" class="h-[95px] w-auto">
+                    </a>
+                    <div>
+                        <a href="/calendars" class="text-gray-50 hover:text-blue-500 px-4 py-2">Calendar</a>
+                        <a href="/gallery" class="text-gray-50 hover:text-blue-500 px-4 py-2">Gallery</a>
+                        <a href="/matches" class="text-gray-50 hover:text-blue-500 px-4 py-2">Match</a>
+                        <a href="/members" class="text-gray-50 hover:text-blue-500 px-4 py-2">Member</a>
+                        <a href="/contact" class="text-gray-50 hover:text-blue-500 px-4 py-2">Contact</a>
+                        <a href="/login" class="text-gray-50 hover:text-blue-500 px-4 py-2">Login</a>
+                        <a href="/register" class="text-gray-50 hover:text-blue-500 px-4 py-2">Register</a>
+                    </div>
+                </div>
+            </nav>
+        @endif
 
             <!-- Page Heading -->
             @isset($header)

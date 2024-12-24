@@ -47,7 +47,6 @@
         max-width: 1200px;
         margin: 0 auto;
         font-family: Arial, sans-serif;
-        background-color: #e4e4e3;
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,6 +54,7 @@
 
     .month-section {
         margin-bottom: 2rem;
+        background-color: #e4e4e3;
     }
 
     .month-header {
@@ -68,6 +68,7 @@
 
     .match-row {
         display: grid;
+        background-color: #e4e4e3;
         grid-template-columns: 150px 200px 1fr auto 1fr;
         align-items: center;
         padding: 1rem;

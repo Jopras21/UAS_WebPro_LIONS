@@ -4,8 +4,7 @@
 
 @section('content')
     <div class="mt-4">
-    @if(auth()->check())
-        
+    @if(auth()->check())   
         <a href="{{ route('calendars.edit', ['id' => auth()->user()->id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
             Edit Calendar
         </a>

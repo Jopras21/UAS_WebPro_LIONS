@@ -16,9 +16,6 @@ use App\Http\Controllers\MemberController;
 
 
 
-//Route::get('/dashboard', function () {
-    //return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,11 +45,7 @@ Route::get('/refresh-captcha', function () {
 //gallery
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-//Route::get('/about', function () {
-    //return view('pages.about', [
-        //'title' => 'About'
-    //]);
-//})->name('about');
+
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/contact/form', [ContactController::class, 'create'])->name('contact.create');

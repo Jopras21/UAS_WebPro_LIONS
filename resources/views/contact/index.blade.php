@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Contact')
+
 @section('content')
 <div class="min-h-screen text-white flex flex-col items-center justify-center">
   <!-- Header Section -->

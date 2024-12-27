@@ -15,11 +15,11 @@
         "bootstrap": "^5.2.3",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^1.1.1",
-        "postcss": "^8.4.47",
+        "postcss": "^8.4.49",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sass": "^1.56.1",
-        "tailwindcss": "^3.4.16",
+        "tailwindcss": "^3.4.17",
         "vite": "^5.4.11"
     },
     "dependencies": {

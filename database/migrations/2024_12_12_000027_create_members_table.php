@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('role'); 
             $table->string('angkatan'); 
             $table->string('jurusan'); 
+            $table->string('photo'); 
             $table->timestamps(); 
         });
     }

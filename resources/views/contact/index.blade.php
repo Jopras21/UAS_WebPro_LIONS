@@ -3,7 +3,7 @@
 @section('title', 'Contact')
 
 @section('content')
-<div class="min-h-screen text-white flex flex-col items-center justify-center">
+<div class="min-h-screen text-white flex flex-col items-center justify-center pt-5">
   <!-- Header Section -->
   <div class="text-center">
     <h1 class="text-3xl font-bold mb-6">Contact Us</h1>

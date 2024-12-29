@@ -38,15 +38,14 @@
             <i class="fas fa-cloud-upload-alt fa-3x text-gray-300"></i>
             <h4 class="text-gray-500 text-lg">Drag and drop files here or click to upload</h4>
         </div>
-    </form>
-    
-        <!-- Submit button untuk form -->
-        <div class="flex justify-center my-5">
+    <div class="absolute justify-center mx-auto my-5">
         <button type="submit" id="submit" class="text-sm text-white px-4 py-3 bg-[#849274] hover:underline transition-all duration-200 rounded-lg">
             Submit
         </button>
     </div>
-
+    </form>
+    
+        <!-- Submit button untuk form -->
     <div class="flex justify-center my-5">
         <a href="{{ route('gallery.index') }}" class="text-sm text-white px-4 py-3 bg-[#849274] hover:underline transition-all duration-200 rounded-lg">Back</a>
     </div>

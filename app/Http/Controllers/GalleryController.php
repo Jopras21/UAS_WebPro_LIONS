@@ -54,26 +54,23 @@ class GalleryController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . $file->getClientOriginalName();
-
+        
             // Get the category name
             $category = Category::find($request->category_id);
             $categoryName = $category->name;
-
-            // Define the storage path
-            $storagePath = 'public/uploads/' . $categoryName;
-
+        
             // Store the file in the storage folder with the category name
-            $filePath = $file->storeAs($storagePath, $filename);
-
+            $filePath = $file->storeAs('uploads/' . $categoryName, $filename, 'public');
+        
             // Remove 'public/' from the file path for storing in the database
-            $dbPath = str_replace('public/', 'storage/', $filePath);
-
-            Gallery::create([
-                'user_id' => $request->user_id,
-                'category_id' => $request->category_id,
-                'title' => $request->title,
-                'path' => $dbPath,
-            ]);
+            $dbPath = 'storage/' . $filePath;
+        
+            $gallery = new Gallery();
+            $gallery->user_id = $request->user_id;
+            $gallery->category_id = $request->category_id;
+            $gallery->title = $request->title;
+            $gallery->path = $dbPath; 
+            $gallery->save();
         }
 
         return redirect()->route('gallery.index')->with('status', 'Images uploaded successfully');

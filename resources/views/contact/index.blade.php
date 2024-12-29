@@ -62,26 +62,56 @@
 
   <!-- Contact Form Section -->
   <div class="w-full max-w-md">
-    <form class="rbg-black ounded-lg p-6 space-y-4">
+    <form action="{{ route('contact.store') }}" method="POST" class="p-6 space-y-4">
         @csrf
       <div>
         <label for="name" class="block text-sm font-medium mb-1">Name</label>
-        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" />
+        <input type="text" id="name" name="name" 
+            class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" required />
       </div>
       <div>
         <label for="email" class="block text-sm font-medium mb-1">Email</label>
-        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" />
+        <input type="email" id="email" name="email" 
+            class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" required />
       </div>
       <div>
         <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
-        <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" />
+        <input type="text" id="subject" name="subject" 
+            class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" required />
       </div>
       <div>
         <label for="message" class="block text-sm font-medium mb-1">Message</label>
-        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none"></textarea>
+        <textarea id="message" name="message" rows="4" 
+            class="w-full px-4 py-2 border border-gray-700 bg-gray-800 rounded text-white focus:ring-2 focus:ring-gold focus:outline-none" required></textarea>
       </div>
-      <button type="submit" class="w-full py-2 font-semibold rounded hover:bg-gradient-to-r from-[#3a4e93]  to-[#051022] focus:outline-none">Send Message</button>
+      <button type="submit" 
+          class="w-full py-2 font-semibold rounded hover:bg-gradient-to-r from-[#3a4e93] to-[#051022] focus:outline-none">Send Message</button>
     </form>
   </div>
 </div>
+
+@if(session('status'))
+    <div id="successModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+      <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+      <div class="bg-gradient-to-r from-[#3a4e93] to-[#051022] rounded-lg p-6 z-10 w-96">
+        <h2 class="text-lg font-bold text-center text-white">{{ session('status') }}</h2>
+        <div class="mt-4 text-center">
+          <button id="closeModal" class="font-semibold text-white rounded hover:bg-[#3a4e93] px-4 py-2 ">Close</button>
+        </div>
+      </div>
+    </div>
+  @endif
+</div>
+
+<script>
+  // Show modal if session status exists
+  @if(session('status'))
+    document.getElementById('successModal').classList.remove('hidden');
+  @endif
+
+  // Close modal functionality
+  document.getElementById('closeModal')?.addEventListener('click', function() {
+    document.getElementById('successModal').classList.add('hidden');
+  });
+</script>
 @endsection

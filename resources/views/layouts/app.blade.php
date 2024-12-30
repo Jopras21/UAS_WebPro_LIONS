@@ -57,5 +57,9 @@
         </div>
 
         @include('layouts.footer')
+
+        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/tabs.js"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/collapse.js"></script>
     </body>
+
 </html>

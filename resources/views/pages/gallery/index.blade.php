@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_template')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,9 +7,13 @@
         overflow-y: auto;
         max-height: 500px;
     }
+    
+    .custom-text {
+        color: #e4e4e3; 
+    }
 </style>
 
-<div class="mx-auto min-h-[500px] p-6 sm:p-12 bg-white">
+<div class="mx-auto min-h-[500px] p-6 sm:p-12 custom-bg">
     @if (session()->has('status'))
     @include('components.status', ['status' => session('status')])
     @endif
@@ -37,12 +41,12 @@
 
         <div class="lg:w-3/4 scrollable">
             @if ($galleries->isEmpty())
-            <div class="text-center">
-                <h1 class="text-2xl font-semibold text-gray-800">No Photos Found</h1>
+            <div class="text-center custom-text">
+                <h1 class="text-2xl font-semibold">No Photos Found</h1>
                 @if($currentCategory)
-                <p class="text-gray-600">There are no photos in {{ $currentCategory->name }}</p>
+                <p>There are no photos in {{ $currentCategory->name }}</p>
                 @else
-                <p class="text-gray-600">There are no photos in this category</p>
+                <p>There are no photos in this category</p>
                 @endif
             </div>
 
@@ -54,10 +58,10 @@
                         <img src="{{ asset($gallery->path) }}" alt="{{ $gallery->title }}" class="w-full h-48 object-cover">
                     </a>
 
-                    <div class="p-4 flex justify-between flex-wrap">
+                    <div class="p-4 flex justify-between flex-wrap custom-text">
                         <div>
                             <h3 class="font-semibold text-sm lg:text-base">{{ $gallery->title }}</h3>
-                            <p class="text-gray-600 text-xs lg:text-sm">{{ $gallery->created_at->format('d M Y') }} by
+                            <p class="text-xs lg:text-sm">{{ $gallery->created_at->format('d M Y') }} by
                                 {{ $gallery->user->first_name }}</p>
                         </div>
 
@@ -83,7 +87,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Fancybox.bind("[data-fancybox]", {
-            // Optional settings
         });
     });
 </script>

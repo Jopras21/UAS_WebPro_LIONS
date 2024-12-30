@@ -2,12 +2,19 @@
 
 @section('content')
 
+
+<style>
+.dz-preview.dz-image-preview {
+    background-color: #e4e4e3 !important;
+}
+</style>
+
 <div class="p-12 bg-[#293f71] min-h-screen rounded-md relative flex flex-col items-center">
     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-auto">
 
     <h1 class="text-3xl font-bold text-white mb-6 mt-28">Upload Photos to Gallery</h1>
 
-    <form id="my-dropzone" class="dropzone border-dashed border-4 border-[#3c5097] rounded-md bg-[#e4e4e3] p-6 w-full mt-10 shadow-lg"
+    <form id="my-dropzone" class="dropzone border-dashed border-4 border-[#3c5097] rounded-3xl bg-[#e4e4e3] p-12 w-10/12 mt-10 shadow-lg"
         action="{{ route('gallery.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -42,11 +49,8 @@
         </div>
     </form>
 
-    <div class="block mt-4">
-        <button type="submit" id="submit" class="text-sm text-white px-6 py-3 bg-[#3c5097] hover:bg-[#4e6bbf] transition-all duration-200 rounded-lg shadow-md mb-4">
-            Submit
-        </button>
-
+    <div class="block mt-6">
+        <input type="submit" form="my-dropzone" value="Submit" id="submit" class="text-sm text-white px-6 py-3 mr-4 bg-[#3c5097] hover:bg-[#4e6bbf] transition-all duration-200 rounded-lg shadow-md cursor-pointer"/>
         <a href="{{ route('gallery.index') }}" class="text-sm text-white px-6 py-3 bg-[#3c5097] hover:bg-[#4e6bbf] transition-all duration-200 rounded-lg shadow-md">Back</a>
     </div>
 </div>

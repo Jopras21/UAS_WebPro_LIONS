@@ -36,6 +36,9 @@
             <a href="{{ route('gallery.create') }}"
                 class="w-full px-6 py-4 text-center bg-blue-700 text-white font-semibold rounded-md mt-4 block">Upload
                 Photos</a>
+            <div class="block w-full mt-4 just">
+                <a href="{{ route('category.index') }}" class="w-full px-6 py-4 text-center bg-blue-700 text-white font-semibold rounded-md mt-4 block">Category</a>
+            </div>
         </div>
         
 
@@ -62,7 +65,7 @@
                         <div>
                             <h3 class="font-semibold text-sm lg:text-base">{{ $gallery->title }}</h3>
                             <p class="text-xs lg:text-sm">{{ $gallery->created_at->format('d M Y') }} by
-                                {{ $gallery->user->first_name }}</p>
+                                {{ $gallery->user->name }}</p>
                         </div>
 
                         <div>

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard_template')
 
-<div class="rounded-md border bg-white border-gray-100 m-6 px-0 sm:p-6 shadow-md shadow-black/5">
+<div class="rounded-xl border bg-[#111827] border-gray-300 m-6 px-0 sm:p-6 shadow-md shadow-black/5 text-white">
 
     @if (session()->has('status'))
     <div class="mx-6">
@@ -22,9 +22,9 @@
         <div class="relative right-0 p-6">
 
             <div class="flex flex-col space-y-4 justify-center sm:space-y-0 sm:flex-row sm:justify-between mb-5">
-                <h1 class="text-2xl text-center sm:text-left font-semibold text-gray-800">Photo Categories</h1>
+                <h1 class="text-2xl text-center sm:text-left font-semibold ">Photo Categories</h1>
                 <button data-ripple-light="true" data-collapse-target="collapse"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                    class="text-white bg-[#3c5097] hover:bg-[#293f71] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     Add
                 </button>
             </div>
@@ -55,24 +55,24 @@
                 @if ($categories->isNotEmpty())
                 <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                     <thead>
-                        <tr>
+                        <tr class="text-gray-900">
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
                                 ID</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left ">
                                 Name</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
                                 Slug</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
                                 Created At</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
                                 Updated At</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
                                 Action</th>
                         </tr>
                     </thead>
@@ -104,7 +104,7 @@
                                 <form action="{{ route('category.destroy', $category->slug) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 text-sm font-medium">Delete</button>
+                                    <button type="submit" class="text-red-700 text-sm font-medium">Delete</button>
                                 </form>
                         </tr>
                         @endforeach

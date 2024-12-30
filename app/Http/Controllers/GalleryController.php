@@ -44,17 +44,17 @@ class GalleryController extends Controller
 
     public function upload(Request $request)
     {
-        $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
-            'user_id' => 'required|exists:users,id'
-        ]);
-
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . $file->getClientOriginalName();
         
+            $request->validate([
+                'file' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+                'category_id' => 'required|exists:categories,id',
+                'title' => 'required|string|max:255',
+                'user_id' => 'required|exists:users,id'
+            ]);
+            
             // Get the category name
             $category = Category::find($request->category_id);
             $categoryName = $category->name;

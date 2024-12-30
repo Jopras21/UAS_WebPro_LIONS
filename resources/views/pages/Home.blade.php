@@ -57,26 +57,6 @@
             </div>
         </div>
     </nav>
-    <!--<nav class="bg-gradient-to-r from-[#051022] to-[#3a4e93] px-4 py-3">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center">
-                <img src="{{ asset('images/logo.png') }}" alt="MyWebsite Logo" class="h-[95px] w-auto">
-            </a>
-            <div>
-                <a href="/calendars" class="inline-flex items-center px-1 pt
-                    -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hove
-                    r:text-gray-300 hover:border-gray-300 dark:hover: border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus: border-gray-300 dark:focus:border
-                    -gray-700 transition duration-150 ease-in-out">Calendar</a>
-                <a href="/gallery" class="text-gray-50 hover:text-blue-500 px-4 py-2">Gallery</a>
-                <a href="/matches" class="text-gray-50 hover:text-blue-500 px-4 py-2">Match</a>
-                <a href="/members" class="text-gray-50 hover:text-blue-500 px-4 py-2">Member</a>
-                <a href="/contact" class="text-gray-50 hover:text-blue-500 px-4 py-2">Contact</a>
-                <a href="/login" class="text-gray-50 hover:text-blue-500 px-4 py-2">Login</a>
-                <a href="/register" class="text-gray-50 hover:text-blue-500 px-4 py-2">Register</a>
-            </div>
-        </div>
-    </nav>-->
-
     <!-- Matches Section -->
     <div class="matches mt-8">
             <h2 class="text-2xl font-bold text-gray-50">Latest Matches</h2>

@@ -23,22 +23,54 @@
         @if (Auth::check())
             @include('layouts.navigation')
         @else
-            <nav class="bg-gradient-to-r from-[#051022] to-[#3a4e93] px-4 py-3">
-                <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                    <a href="/" class="flex items-center">
-                        <img src="{{ asset('images/logo.png') }}" alt="MyWebsite Logo" class="h-[95px] w-auto">
-                    </a>
-                    <div>
-                        <a href="/calendars" class="text-gray-50 hover:text-blue-500 px-4 py-2">Calendar</a>
-                        <a href="/gallery" class="text-gray-50 hover:text-blue-500 px-4 py-2">Gallery</a>
-                        <a href="/matches" class="text-gray-50 hover:text-blue-500 px-4 py-2">Match</a>
-                        <a href="/members" class="text-gray-50 hover:text-blue-500 px-4 py-2">Member</a>
-                        <a href="/contact" class="text-gray-50 hover:text-blue-500 px-4 py-2">Contact</a>
-                        <a href="/login" class="text-gray-50 hover:text-blue-500 px-4 py-2">Login</a>
-                        <a href="/register" class="text-gray-50 hover:text-blue-500 px-4 py-2">Register</a>
+        <nav class="bg-gradient-to-r from-[#051022] to-[#3a4e93] px-4 py-3">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <!--Logo-->
+                        <div class="shrink-0 flex items-center">
+                            <a href="/" class="flex items-center">
+                                <img src="{{ asset('images/logo.png') }}" alt="MyWebsite Logo" class="h-[95px] w-auto">
+                            </a>
+                        </div>
+
+                        <!--Navigation Link-->
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <a href="/gallery" class="inline-flex items-center px-1 pt
+                            -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                            hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                            -gray-700 transition duration-150 ease-in-out">Gallery</a>
+                            <a href="/calendars" class="inline-flex items-center px-1 pt
+                            -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                            hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                            -gray-700 transition duration-150 ease-in-out">Calendar</a>
+                            <a href="/matches" class="inline-flex items-center px-1 pt
+                            -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                            hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                            -gray-700 transition duration-150 ease-in-out">Matches</a>
+                            <a href="/members" class="inline-flex items-center px-1 pt
+                            -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                            hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                            -gray-700 transition duration-150 ease-in-out">Member</a>
+                            <a href="/contact" class="inline-flex items-center px-1 pt
+                            -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                            hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                            -gray-700 transition duration-150 ease-in-out">Contact</a>
+                        </div>
+                    </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <a href="/login" class="inline-flex items-center px-1 pt
+                                -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                                hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                                -gray-700 transition duration-150 ease-in-out">Login</a>
+                            <a href="/register" class="inline-flex items-center px-1 pt
+                                -1 border-b-2 border-transparent text-md font-medium leading-5 text-gray-500 dark:text-gray-400 hover: text-gray-700 dark:hover:text-gray-300 
+                                hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border
+                                -gray-700 transition duration-150 ease-in-out">Register</a>
+                        </div>
                     </div>
                 </div>
-            </nav>
+        </nav>
         @endif
 
             <!-- Page Heading -->

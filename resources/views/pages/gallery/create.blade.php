@@ -2,21 +2,23 @@
 
 @section('content')
 
-<div class="p-12 bg-white min-h-[500px] rounded-md">
-    <h1 class="text-2xl font-semibold text-gray-800 mb-6">Upload Photos to Gallery</h1>
+<div class="p-12 bg-[#293f71] min-h-screen rounded-md relative flex flex-col items-center">
+    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-auto">
 
-    <form id="my-dropzone" class="dropzone border-dashed border-4 border-gray-300 rounded-md"
+    <h1 class="text-3xl font-bold text-white mb-6 mt-28">Upload Photos to Gallery</h1>
+
+    <form id="my-dropzone" class="dropzone border-dashed border-4 border-[#3c5097] rounded-md bg-[#e4e4e3] p-6 w-full mt-10 shadow-lg"
         action="{{ route('gallery.upload') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @error('file')
-        <div class="text-red-500">{{ $message }}</div>
+        <div class="text-red-500 mb-4">{{ $message }}</div>
         @enderror
 
         <div class="mb-4">
-            <label for="category" class="block text-gray-700 text-sm font-semibold mb-2">Category</label>
+            <label for="category" class="block text-[#293f71] text-sm font-semibold mb-2">Category</label>
             <select id="category" name="category_id"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-[#293f71] leading-tight focus:outline-none focus:shadow-outline">
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -24,37 +26,36 @@
         </div>
 
         <div class="mb-4">
-            <label for="title" class="block text-gray-700 text-sm font-semibold mb-2">Title</label>
+            <label for="title" class="block text-[#293f71] text-sm font-semibold mb-2">Title</label>
             <input type="text" id="title" name="title" placeholder="Fill in the title before uploading files"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder:text-xs">
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-[#293f71] leading-tight focus:outline-none focus:shadow-outline placeholder:text-xs">
             @error('title')
             <div class="text-red-500">{{ $message }}</div>
             @enderror
 
-            <p class="text-gray-400 font-medium text-xs mt-1">Max size 2 MB | jpg, jpeg, png, and webp only (preferred webp)</p>
+            <p class="text-[#293f71] font-medium text-xs mt-1">Max size 2 MB | jpg, jpeg, png, and webp only (preferred webp)</p>
         </div>
 
         <div class="dz-message flex flex-col items-center justify-center py-4">
-            <i class="fas fa-cloud-upload-alt fa-3x text-gray-300"></i>
-            <h4 class="text-gray-500 text-lg">Drag and drop files here or click to upload</h4>
+            <i class="fas fa-cloud-upload-alt fa-3x text-[#3c5097]"></i>
+            <h4 class="text-[#293f71] text-lg">Drag and drop files here or click to upload</h4>
         </div>
-    <div class="absolute left-1/2 -translate-x-1/2 justify-center mt-5 cursor-pointer">
-        <button type="submit" id="submit" class="text-sm text-white absolute left-1/2 -translate-x-1/2 justify-center bottom-[-60px] px-4 py-3 bg-[#849274] hover:underline cursor transition-all duration-200 rounded-lg">
+    </form>
+
+    <div class="block mt-4">
+        <button type="submit" id="submit" class="text-sm text-white px-6 py-3 bg-[#3c5097] hover:bg-[#4e6bbf] transition-all duration-200 rounded-lg shadow-md mb-4">
             Submit
         </button>
-    </div>
-    </form>
-    
-    <div class="flex justify-center my-5">
-        <a href="{{ route('gallery.index') }}" class="text-sm text-white px-4 py-3 mt-12 bg-[#849274] hover:underline transition-all duration-200 rounded-lg">Back</a>
+
+        <a href="{{ route('gallery.index') }}" class="text-sm text-white px-6 py-3 bg-[#3c5097] hover:bg-[#4e6bbf] transition-all duration-200 rounded-lg shadow-md">Back</a>
     </div>
 </div>
 
 <script>
     Dropzone.options.myDropzone = {
-        autoProcessQueue: true, // Automatically process queue
+        autoProcessQueue: true, 
         paramName: "file",
-        maxFilesize: 2, // MB
+        maxFilesize: 2, 
         acceptedFiles: "image/*",
         init: function() {
             this.on("sending", function(file, xhr, formData) {

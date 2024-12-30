@@ -1,6 +1,8 @@
-@extends('layouts.dashboard_template')
+@extends('layouts.app')
 
-<div class="rounded-xl border bg-[#111827] border-gray-300 m-6 px-0 sm:p-6 shadow-md shadow-black/5 text-white">
+@section('content')
+
+<div class="rounded-xl border bg-[#111822] border-gray-300 m-6 px-0 sm:p-6 shadow-md shadow-black/5 text-white">
 
     @if (session()->has('status'))
     <div class="mx-6">
@@ -29,7 +31,7 @@
                 </button>
             </div>
 
-            <div data-collapse="collapse"
+             <div data-collapse="collapse"
                 class="block h-0 w-full basis-full overflow-hidden transition-all duration-300 ease-in-out mb-8">
                 <div class="relative my-4 flex mx-auto w-8/12 justify-center flex-col rounded-xl text-gray-700">
                     <form class="leading-relaxed block max-w-md w-full mx-auto" action="{{ route('category.store') }}" method="POST">
@@ -37,7 +39,7 @@
 
                         <div class="relative z-0 w-full mb-5 group">
                             <input type="text" name="name" id="name"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " required />
                             <label for="name"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
@@ -45,17 +47,17 @@
 
                         <div class="flex justify-center">
                             <button type="submit"
-                            class="text-white bg-[#415C3F] hover:bg-[#31492F] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                            class="text-white bg-[#3c5097] hover:bg-[#293f71] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update</button>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>  
 
             <div class="block opacity-100 overflow-x-auto">
                 @if ($categories->isNotEmpty())
                 <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                     <thead>
-                        <tr class="text-gray-900">
+                        <tr class="text-gray-900 bg-slate-500">
                             <th
                                 class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
                                 ID</th>
@@ -80,11 +82,11 @@
                         @foreach ($categories as $category)
                         <tr class="hover:bg-slate-300">
                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">{{ $category->id }}</span>
+                                <span class="text-[13px] font-medium text-slate-200">{{ $category->id }}</span>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50 hover:underline">
                                 <a href="{{ route('category.edit', $category->slug) }}"
-                                    class="text-gray-600 text-sm font-medium">{{
+                                    class="text-gray-600 text-sm text-slate-200 font-medium">{{
                                     $category->name }}</a>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
@@ -121,3 +123,4 @@
         </div>
     </div>
 </div>
+@endsection

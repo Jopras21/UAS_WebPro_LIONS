@@ -13,9 +13,10 @@ use App\Models\Calendar;
 use Illuminate\Foundation\Inspiring;
 use App\Models\Contact;
 use App\Http\Controllers\MemberController;
-
-
-
+use App\Http\Controllers\AdminController;
+use Mews\Captcha\Facades\Captcha;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -116,7 +117,8 @@ Route::get('/matches', [MatchController::class, 'showMatches'])->name('matches.s
 Route::resource('gallery', GalleryController::class)->except(['show']);
 Route::get('gallery/{id}', [GalleryController::class, 'show']);
 
-
-
+Route::get('/refresh-captcha', function () {
+    return Captcha::img();
+});
 
 require __DIR__.'/auth.php';

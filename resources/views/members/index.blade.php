@@ -88,7 +88,7 @@
             margin: 5px 0;
         }
 
-        .edit-member-button {
+        .edit-member-button, .delete-member-button {
             margin-top: 20px;
             padding: 10px 16px;
             background-color: #3c5097;
@@ -101,7 +101,7 @@
             transition: background-color 0.3s;
         }
 
-        .edit-member-button:hover {
+        .edit-member-button:hover, .delete-member-button:hover {
             background-color: #293f71;
         }
 
@@ -128,6 +128,13 @@
                 </div>
                 @if(auth()->check()) 
                     <a href="{{ url('/members/edit/' . $member->id) }}" class="edit-member-button">Edit</a>
+                    @if(auth()->user()->isAdmin()) <!-- Pengecekan untuk Admin -->
+                        <form action="{{ url('/members/' . $member->id) }}" method="post" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-member-button" onclick="return confirm('Are you sure you want to delete this member?')">Delete</button>
+                        </form>
+                    @endif
                 @endif
             </div>
             @endforeach
@@ -147,6 +154,13 @@
                 </div>
                 @if(auth()->check())
                     <a href="{{ url('/members/edit/' . $member->id) }}" class="edit-member-button">Edit</a>
+                    @if(auth()->user()->isAdmin()) <!-- Pengecekan untuk Admin -->
+                        <form action="{{ url('/members/' . $member->id) }}" method="post" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-member-button" onclick="return confirm('Are you sure you want to delete this member?')">Delete</button>
+                        </form>
+                    @endif
                 @endif
             </div>
             @endforeach

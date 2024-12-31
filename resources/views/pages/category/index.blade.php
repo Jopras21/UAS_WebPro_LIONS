@@ -26,7 +26,7 @@
             <div class="flex flex-col space-y-4 justify-center sm:space-y-0 sm:flex-row sm:justify-between mb-5">
                 <h1 class="text-2xl text-center sm:text-left font-semibold ">Photo Categories</h1>
                 <button data-ripple-light="true" data-collapse-target="collapse"
-                    class="text-white bg-[#3c5097] hover:bg-[#293f71] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                    class="text-white bg-[#3c5097] hover:bg-[#293f71] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                     Add
                 </button>
             </div>
@@ -57,30 +57,30 @@
                 @if ($categories->isNotEmpty())
                 <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                     <thead>
-                        <tr class="text-gray-900 bg-slate-500">
+                        <tr class="text-gray-100 bg-">
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left rounded-tl-md rounded-bl-md">
                                 ID</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left ">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left ">
                                 Name</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left">
                                 Slug</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left">
                                 Created At</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left">
                                 Updated At</th>
                             <th
-                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                class="text-[12px] uppercase tracking-wide font-medium py-2 px-4 bg-[#293f71] text-left rounded-tr-md rounded-br-md">
                                 Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
-                        <tr class="hover:bg-slate-300">
+                        <tr class="hover:bg-[#3c5097] hover:text-black transition-all">
                             <td class="py-2 px-4 border-b border-b-gray-50">
                                 <span class="text-[13px] font-medium text-slate-200">{{ $category->id }}</span>
                             </td>

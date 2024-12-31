@@ -21,8 +21,8 @@
     <div class="flex flex-col lg:flex-row mx-auto space-y-6 lg:space-y-0 lg:space-x-3">
 
         <div class="lg:w-1/4">
-            <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-md">
-                <li class="w-full font-semibold px-6 py-4 text-base border-b bg-gray-100 text-center">Select Category
+            <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-[#3c5097] rounded-md">
+                <li class="w-full font-semibold px-6 py-4 text-base border-b bg-[#3c5097] text-center text-gray-100">Select Category
                 </li>
                 @foreach ($categories as $category)
                     <a href="{{ route('gallery.index', ['category' => $category->slug]) }}">
@@ -34,10 +34,10 @@
                 @endforeach
             </ul>
             <a href="{{ route('gallery.create') }}"
-                class="w-full px-6 py-4 text-center bg-blue-700 text-white font-semibold rounded-md mt-4 block">Upload
+                class="w-full px-6 py-4 text-center bg-[#293f71] text-white font-semibold rounded-md mt-4 block">Upload
                 Photos</a>
             <div class="block w-full mt-4 just">
-                <a href="{{ route('category.index') }}" class="w-full px-6 py-4 text-center bg-blue-700 text-white font-semibold rounded-md mt-4 block">Category</a>
+                <a href="{{ route('category.index') }}" class="w-full px-6 py-4 text-center bg-[#293f71] text-white font-semibold rounded-md mt-4 block">Category</a>
             </div>
         </div>
         
@@ -72,7 +72,7 @@
                             <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" >
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="px-2 py-1 bg-red-500 text-white hover:bg-red-700 focus:outline-none rounded-sm flex items-center justify-center">
+                                <button type="submit" class="px-3 py-2 bg-red-500 text-white hover:bg-red-700 focus:outline-none rounded-lg flex items-center justify-center">
                                     <i class="ri-delete-bin-line text-sm"></i>
                                 </button>
 

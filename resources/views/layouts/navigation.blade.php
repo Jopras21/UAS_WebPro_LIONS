@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                        <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
                             {{ __('Gallery') }}
                         </x-nav-link>
                         <x-nav-link :href="route('calendars.index')" :active="request()->routeIs('calendars.index')">

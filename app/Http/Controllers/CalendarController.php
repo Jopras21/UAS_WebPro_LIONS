@@ -41,10 +41,19 @@ class CalendarController extends Controller
         return redirect()->route('calendars.index');
     }
 
-    public function show(string $id)
+    public function show($id)
     {
-        $event = Calendar::findOrFail($id);
-        return view('calendars.show', compact('event'));
+        $calendar = Calendar::findOrFail($id);
+        return view('calendars.show', compact('calendar'));
+    }
+
+    public function showAll()
+    {
+        // Ambil semua data event dari database
+        $events = Calendar::all();
+
+        // Kirim data event ke view yang sesuai
+        return view('calendars.show', compact('events'));
     }
 
     public function edit(string $id)

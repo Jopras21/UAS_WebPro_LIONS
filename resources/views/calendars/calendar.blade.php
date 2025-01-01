@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Calendar')
-
 @section('content')
-    <div class="my-4">
-    @if(auth()->check()) 
-    <a href="{{ route('calendars.create', ['id' => auth()->user()->id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">
-            Add
-        </a>  
-        <a href="{{ route('calendars.edit', ['id' => auth()->user()->id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-2">
-            Edit
-        </a>
-    @endif
+    <div class="flex my-4 w-full mx-28">
+        @if(auth()->check()) 
+        <a href="{{ route('calendars.create', ['id' => auth()->user()->id]) }}" class="bg-[#293f71] text-white px-4 py-2 rounded hover:bg-[#293f71] mr-2">
+                Add
+            </a>  
+            <a href="{{ route('calendars.show') }}" class="bg-[#293f71] text-white px-4 py-2 rounded hover:bg-[#293f71] ml-2">
+                Edit
+            </a>
+        @endif
     </div>
     <div class="flex justify-center items-center min-h-screen">
         <div id="calendar" class="w-[1500px] max-w-7xl text-gray-50"></div> <!-- Tailwind class untuk margin kiri dan ukuran -->
@@ -72,4 +70,5 @@
             calendar.render();
         });
     </script>
+    
 @endsection

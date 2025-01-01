@@ -140,8 +140,7 @@
             <textarea name="description" id="description" rows="4" required>{{ old('description', $event->description) }}</textarea>
 
             <label for="start">Start Date:</label>
-            <input type="datetime-local" name="start" id="start"
- value="{{ old('start', \Carbon\Carbon::parse($event->start)->format('Y-m-d\TH:i')) }}" required />
+            <input type="datetime-local" name="start" id="start" value="{{ old('start', \Carbon\Carbon::parse($event->start)->format('Y-m-d\TH:i')) }}" required />
 
             <label for="end">End Date:</label>
             <input type="datetime-local" name="end" id="end"

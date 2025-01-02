@@ -1,21 +1,34 @@
 @extends('layouts.app')
 
+@section('title', 'Calendar')
+
 @section('content')
-    <div class="flex my-4 w-full mx-28">
+    <div class="my-4">
         @if(auth()->check()) 
-        <a href="{{ route('calendars.create', ['id' => auth()->user()->id]) }}" class="bg-[#293f71] text-white px-4 py-2 rounded hover:bg-[#293f71] mr-2">
+            <a href="{{ route('calendars.create', ['id' => auth()->user()->id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">
                 Add
             </a>  
-            <a href="{{ route('calendars.show') }}" class="bg-[#293f71] text-white px-4 py-2 rounded hover:bg-[#293f71] ml-2">
+            <a href="{{ route('calendars.edit', ['id' => auth()->user()->id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-2">
                 Edit
             </a>
         @endif
     </div>
     <div class="flex justify-center items-center min-h-screen">
-        <div id="calendar" class="w-[1500px] max-w-7xl text-gray-50"></div> <!-- Tailwind class untuk margin kiri dan ukuran -->
+        <div id="calendar" class="w-[1500px] max-w-7xl text-gray-50"></div>
     </div>
 
     <div class="event-tooltip" id="event-tooltip"></div>
+
+    <!-- Notification Modal -->
+    <div id="event-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+        <div class="bg-gray-900 text-white rounded-lg shadow-lg p-6 max-w-sm w-full transition-transform transform scale-95 hover:scale-100">
+            <h2 class="text-2xl font-bold mb-2" id="modal-title"></h2>
+            <p class="mb-2 text-sm text-gray-400" id="modal-start"></p>
+            <p class="mb-2 text-sm text-gray-400" id="modal-end"></p>
+            <p class="mb-4 text-sm text-gray-300" id="modal-description"></p>
+            <button id="close-modal" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-200">Close</button>
+        </div>
+    </div>
 
     <script>
         var events = JSON.parse('{!! json_encode($events) !!}');
@@ -58,17 +71,23 @@
                     tooltip.style.display = 'none';
                 },
                 eventClick: function(info) {
-                    alert(
-                        'Event: ' + info.event.title +
-                        '\nStarts: ' + info.event.start +
-                        '\nEnds: ' + info.event.end +
-                        '\nDescription: ' + (info.event.extendedProps.description || '')
-                    );
+                    // Populate modal with event details
+                    document.getElementById('modal-title').innerText = info.event.title;
+                    document.getElementById('modal-start').innerText = 'Starts: ' + info.event.start.toLocaleString();
+                    document.getElementById('modal-end').innerText = 'Ends: ' + info.event.end.toLocaleString();
+                    document.getElementById('modal-description').innerText = 'Description: ' + (info.event.extendedProps.description || '');
+
+                    // Show the modal
+                    document.getElementById('event-modal').classList.remove('hidden');
                 }
             });
 
             calendar.render();
+
+            // Close modal functionality
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('event-modal').classList.add('hidden');
+            });
         });
     </script>
-    
 @endsection

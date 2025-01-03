@@ -122,4 +122,11 @@ Route::get('/refresh-captcha', function () {
     return Captcha::img();
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/pending-members', [AdminController::class, 'viewPendingMembers'])->name('admin.pending_members');
+    Route::post('/admin/approve-member/{id}/{action}', [AdminController::class, 'approveOrDeleteMember'])->name('admin.approve_or_delete_member');
+    
+    Route::get('/member/profile', [MemberController::class, 'showProfile'])->name('member.profile');
+});
+
 require __DIR__.'/auth.php';

@@ -45,9 +45,7 @@ Route::get('/refresh-captcha', function () {
 })->name('refresh.captcha');
 
 //gallery
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
+Route::get('/', [CalendarController::class, 'index'])->name('calendar.index');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/contact/form', [ContactController::class, 'create'])->name('contact.create');

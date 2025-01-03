@@ -86,36 +86,39 @@
 
 <h1>Add New Members</h1>
 
-@if($errors->any())
-<div class="error-list">
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
+@if(auth()->check() && auth()->user()->is_admin) 
+    @if($errors->any())
+    <div class="error-list">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <div class="form-container">
+        <form action="/members" method="post" enctype="multipart/form-data">
+            @csrf
+            <label for="full_name">Full Name</label>
+            <input type="text" name="full_name" id="full_name" required />
+
+            <label for="role">Role</label>
+            <input type="text" name="role" id="role" required />
+
+            <label for="jurusan">Major</label>
+            <input type="text" name="jurusan" id="jurusan" required />
+
+            <label for="angkatan">Year</label>
+            <input type="text" name="angkatan" id="angkatan" required />
+
+            <label for="photo">Photo</label>
+            <input type="file" name="photo" id="photo" required />
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+@else
+    <p>You do not have permission to access this page.</p>
 @endif
-
-<div class="form-container">
-    <form action="/members" method="post" enctype="multipart/form-data">
-        @csrf
-        <label for="full_name">Full Name</label>
-        <input type="text" name="full_name" id="full_name" required />
-
-        <label for="role">Role</label>
-        <input type="text" name="role" id="role" required />
-
-        <label for="jurusan">Major</label>
-        <input type="text" name="jurusan" id="jurusan" required />
-
-        <label for="angkatan">Year</label>
-        <input type="text" name="angkatan" id="angkatan" required />
-
-        <label for="photo">Photo</label>
-        <input type="file" name="photo" id="photo" required />
-
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
 @endsection
